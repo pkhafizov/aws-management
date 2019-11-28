@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'EC2DescribeAllInstances
+
+  Sample SAM Template for EC2DescribeAllInstances
+
+  '
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  EC2DescribeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: EC2DescribeFunction
+      Handler: app.lambdaHandler
+      Runtime: nodejs10.x
+      Policies:
+      - EC2DescribePolicy: {}
+      Events:
+        DescribeAllInstances:
+          Type: Schedule
+          Properties:
+            Schedule: cron(00 17 * * ? *)
+Outputs:
+  EC2DescribeFunction:
+    Description: Describe all instances Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - EC2DescribeFunction
+      - Arn
+  EC2DescribeFunctionRole:
+    Description: Implicit IAM Role created for Hello World function
+    Value:
+      Fn::GetAtt:
+      - EC2DescribeFunctionRole
+      - Arn

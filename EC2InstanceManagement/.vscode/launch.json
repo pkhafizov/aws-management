@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "NodeJS: Remote Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5678,
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}/startstop-instance",
+            "remoteRoot": "/var/task",
+            "protocol": "<protocol>",
+            "skipFiles": ["/var/runtime/node_modules/**/*.js", "<node_internals>/**/*.js"]
+        }
+    ]
+}
